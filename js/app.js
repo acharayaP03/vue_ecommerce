@@ -94,6 +94,10 @@ new Vue({
       //if product doesn't already exist then add one
       return null;
     },
+    increaseCartItemQuantity: function(cartItem){
+        cartItem.product.inStock--;
+        cartItem.quantity++
+    }
   },
   computed: {
     cartTotal: function () {
