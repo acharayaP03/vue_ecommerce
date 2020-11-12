@@ -113,6 +113,14 @@ new Vue({
         this.decreaseCartItem(cartItem);
       }
     },
+    checkout: function () {
+      if (confirm("Are sure that you want to purchase these product?")) {
+        this.cart.item.forEach((item) => {
+          item.product.inStock += item.quantity;
+        });
+        this.cart.item = [];
+      }
+    },
   },
   computed: {
     cartTotal: function () {
