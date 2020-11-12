@@ -54,5 +54,14 @@ new Vue({
       },
     ],
   },
+  filters: {
+    currency: function (value) {
+      return Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "AUD",
+        minimumFractionDigits: 0,
+      }).format(value);
+    },
+  },
+  
 });
- 
