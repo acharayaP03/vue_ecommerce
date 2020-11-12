@@ -1,6 +1,7 @@
 new Vue({
   el: "#app",
   data: {
+      isShowing: false,
     cart: {
       item: [],
     },
