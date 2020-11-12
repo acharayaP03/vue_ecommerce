@@ -1,7 +1,7 @@
 new Vue({
   el: "#app",
   data: {
-      isShowing: false,
+    isShowing: false,
     cart: {
       item: [],
     },
@@ -66,13 +66,33 @@ new Vue({
   },
   methods: {
     addProductsToCart: function (product) {
-      this.cart.item.push({
-        product,
-        quantity: 1,
-      });
+      // here lets check if the product already exists in the cartTotal
+      // if exist then only increment quantity and price
+      // if not then push the item into the cartTotal
+
+      let cartItem = this.getCartItem(product);
+      if (cartItem !== null) {
+        cartItem.quantity++;
+      } else {
+        this.cart.item.push({
+          product,
+          quantity: 1,
+        });
+      }
       //then decrease the product from inStock
 
       product.inStock--;
+    },
+    getCartItem: function (product) {
+      const { item } = this.cart;
+
+      for (let i = 0; i < item.length; i++) {
+        if (item[i].product.id === product.id) {
+          return item[i];
+        }
+      }
+      //if product doesn't already exist then add one
+      return null;
     },
   },
   computed: {
@@ -83,6 +103,9 @@ new Vue({
         total += i.quantity * i.product.price;
       });
       return total;
+    },
+    gstTotal: function () {
+      return (this.cartTotal * 10) / 100;
     },
   },
 });
