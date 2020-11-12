@@ -94,10 +94,25 @@ new Vue({
       //if product doesn't already exist then add one
       return null;
     },
-    increaseCartItemQuantity: function(cartItem){
-        cartItem.product.inStock--;
-        cartItem.quantity++
-    }
+    increaseCartItemQuantity: function (cartItem) {
+      cartItem.product.inStock--;
+      cartItem.quantity++;
+    },
+    decreaseCartItem: function (cartItem) {
+      const index = this.cart.item.indexOf(cartItem);
+
+      if (index !== -1) {
+        this.cart.item.splice(index, 1);
+      }
+    },
+    decreaseQuantity: function (cartItem) {
+      cartItem.product.inStock++;
+      cartItem.quantity--;
+
+      if (cartItem.quantity === 0) {
+        this.decreaseCartItem(cartItem);
+      }
+    },
   },
   computed: {
     cartTotal: function () {
