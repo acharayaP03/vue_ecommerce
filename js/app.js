@@ -2,6 +2,7 @@ new Vue({
   el: "#app",
   data: {
     isShowing: false,
+    gitHubLink: "https://github.com/acharayaP03/vue_ecommerce",
     cart: {
       item: [],
     },

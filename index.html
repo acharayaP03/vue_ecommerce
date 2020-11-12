@@ -13,6 +13,7 @@
   </head>
 
   <body>
+    <div class="container"></div>
     <div id="app" v-cloak>
       <div class="container">
         <br />
@@ -37,6 +38,13 @@
         </nav>
 
         <div v-if="!isShowing" id="products" class="row list-group">
+          <div class="jumbotron text-center">
+            <h1>Vue Ecommerce</h1>
+            <p>
+              This website is only for study and practise purpose and not intended for production.
+            </p>
+            <p><a class="btn btn-primary btn-lg" :href="gitHubLink" role="button">Learn more</a></p>
+          </div>
           <div class="item col-xs-4" v-for="product in products">
             <div class="thumbnail">
               <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" />
