@@ -63,5 +63,15 @@ new Vue({
       }).format(value);
     },
   },
-  
+  methods: {
+    addProductsToCart: function (product) {
+      this.cart.item.push({
+        product,
+        quantity: 1,
+      });
+      //then decrease the product from inStock
+
+      product.inStock--;
+    },
+  },
 });
