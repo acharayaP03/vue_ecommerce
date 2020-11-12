@@ -74,4 +74,14 @@ new Vue({
       product.inStock--;
     },
   },
+  computed: {
+    cartTotal: function () {
+      let total = 0;
+
+      this.cart.item.forEach((i) => {
+        total += i.quantity * i.product.price;
+      });
+      return total;
+    },
+  },
 });
