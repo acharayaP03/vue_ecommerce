@@ -92,6 +92,7 @@
                     :disabled="i.product.inStock === 0"
                     >+</buttton
                   >
+                  <button class="btn btn-danger" @click="decreaseQuantity(i)">-</button>
                 </td>
                 <td>{{ i.quantity * i.product.price | currency}}</td>
               </tr>
